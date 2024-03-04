@@ -1,4 +1,5 @@
 # coding: utf-8
+import os
 import pigpio
 import tabulate
 import pandas as pd
@@ -22,16 +23,14 @@ def main(pins):
     def read_pin(p: int):
         return pi.read(int(p))
 
-    def read_pins():
-        df = df.apply(lambda el: read_pin(int(el.column)), )
-        return df
-
     input('[Press any key to continue...]')
     print('Continuously monitoring GPIO values...')
     time.sleep(1)
     while True:
-        df = read_pins()
+        os.system('cls' if os.name == 'nt' else 'clear')
+        df = df.apply(lambda el: read_pin(int(el.column)), )
         print(df.to_markdown())
+        sys.stdout.flush()
 
 
 if __name__ == '__main__':
