@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rpi-dump-gpio"
-version = "0.1.0"
+version = "0.1.1"
 description = "dump the gpio values of a raspberry pi"
 authors = ["Robbie Capps"]
 readme = "README.md"
@@ -17,3 +17,6 @@ ipython = "^8.22.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+rpi-dump-gpio = "rpi_dump_gpio.main:main"
