@@ -18,18 +18,19 @@ def main(pins):
     pi = pigpio.pi()
     print('Initialized PiGPIO instance.')
     
-    df = pd.DataFrame(np.zeros((1,len(pins))), columns=pins)
+    df = pd.DataFrame(dict(zip(pins, -np.zeros((1,len(pins))))), columns=pins)
     
     def read_pin(p: int):
         return pi.read(int(p))
 
-    input('[Press any key to continue...]')
-    print('Continuously monitoring GPIO values...')
+    input('\n[Press any key to continue...]\n')
+    print('Continuously monitoring GPIO values (in 1 sec)...')
     time.sleep(1)
+    print('...Go!\n')
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
-        df = df.apply(lambda el: read_pin(int(el.column)), )
-        print(df.to_markdown())
+        df.iloc[0] = df.iloc[0].apply(lambda el: read_pin(int(el.name)), )
+        print(df.T.to_markdown())
         sys.stdout.flush()
 
 
