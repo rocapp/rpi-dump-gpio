@@ -34,7 +34,7 @@ def main(pins, host, port):
     if not pins:
         exit(0)
 
-    df = pd.DataFrame(dict(zip(pins, -np.zeros((1, len(pins))))), columns=pins)
+    df = pd.DataFrame([len(pins) * [np.nan, ],], columns=pins)
 
     def read_pin(p: int):
         return pi.read(int(p))
