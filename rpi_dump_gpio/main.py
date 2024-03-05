@@ -45,7 +45,7 @@ def main(pins, host, port):
     print('...Go!\n')
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
-        df.iloc[0] = df.iloc[0].apply(lambda el: read_pin(int(el.name)), )
+        df = df.apply(lambda el: read_pin(int(el.name)), )
         print(df.T.to_markdown())
         sys.stdout.flush()
 
