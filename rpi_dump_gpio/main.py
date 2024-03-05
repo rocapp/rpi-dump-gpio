@@ -34,7 +34,7 @@ def main(pins, host, port):
     if not pins:
         exit(0)
 
-    df = pd.DataFrame([len(pins) * [np.nan, ],], columns=pins)
+    df = pd.DataFrame([len(pins) * [-0.0, ]], columns=pins)
 
     def read_pin(p: int):
         return pi.read(int(p))
@@ -45,8 +45,8 @@ def main(pins, host, port):
     print('...Go!\n')
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
-        df = df.apply(lambda el: read_pin(int(el.name)), )
-        print(df.T.to_markdown())
+        df = df.apply(lambda el: read_pin(int(el.name)))
+        print(df.to_markdown())
         sys.stdout.flush()
 
 
