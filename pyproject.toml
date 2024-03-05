@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rpi-dump-gpio"
-version = "0.1.13"
+version = "0.1.14"
 description = "dump the gpio values of a raspberry pi"
 authors = ["Robbie Capps"]
 readme = "README.md"
